@@ -3,12 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>猪八戒demo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="canvas-menu">
+    <img id="widget1" src="../dist/image/bo1.jpg" alt="">
+    <img src="../dist/image/bo2.jpg" alt="">
+    <img src="../dist/image/bo3.jpg" alt="">
+</div>
+<div id="canvasContainer">
+    <!--<canvas id="mycanvas">你使用的浏览器不支持canvas</canvas>-->
+    <div id="canvasStage"></div>
+</div>
 
-<canvas id="mycanvas">你使用的浏览器不支持canvas</canvas>
-<script src="../CanvasInput/CanvasInput.js"></script>
-<script src="../paper.js/dist/paper-full.js" ></script>
+<input type="button" id="save" value="保存为图片">
+
+
+<script src="html2canvas.js"></script>
+<script src="canvas2image.js"></script>
+<script src="canvas.js"></script>
+<script src="InputWidget.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
