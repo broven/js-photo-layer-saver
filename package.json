@@ -1,0 +1,26 @@
+{
+  "name": "jsphotoshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/broven/js-photoShop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/broven/js-photoShop/issues"
+  },
+  "homepage": "https://github.com/broven/js-photoShop#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "pump": "^1.0.1"
+  },
+  "devDependencies": {
+    "gulp-uglify": "^2.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+/*在这里定义所有widget的公共属性
+
+*/
+.inputWidgetRootDiv{
+
+}
+.inputWidgetTextarea{
+
+}
+.inputWidgetClose{
+    /*关闭*/
+    display: inline-block;
+
+}
+.inputWidgetCount{
+    /*定义计数div的样式*/
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    bottom:0;
+}

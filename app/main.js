@@ -12,67 +12,51 @@ for(var i = 0;i<widget.length;i++){
 
 
 function widgetClick(evt) {
+    //生成新的widget
     var a = new InputWidget({
         src:this.src,
         width:"200",
         height:"200"
-    })
+    });
     a.init();
 
 }
 
 
 
-var canvas = document.querySelector('#mycanvas')
-var save = document.querySelector("#save")
-save.addEventListener('click',function (e) {
-    console.log("click")
-    //Canvas2Image.saveAsImage(canvas,600,400,"png")
+
+var $save = document.querySelector('#save');
+var $showJSON =document.querySelector('#showJSON');
+
+
+
+
+//文件保存
+$save.addEventListener('click',saveImage)
+$showJSON.addEventListener('click',getWidgetTextContext)
+/**
+ * 获取json字符串
+ */
+
+
+function getWidgetTextContext() {
+    var textJSON={};
+  var textareas = document.querySelectorAll('.inputWidgetTextarea');
+    for (var i = 0;i<textareas.length;i++){
+        textJSON[i+1]=textareas[i].value;
+    }
+    console.log(textJSON); //舞台元素json
+}
+function saveImage() {
+    /**
+     * 保存成图片
+     */
     html2canvas(document.querySelector('#canvasStage'), {
         onrendered: function(canvas) {
-            //document.body.appendChild(canvas);
-            //Canvas2Image.saveAsImage(canvas, 600, 600, "png")
-
-
-                var type = 'png';
-                var imgData = canvas.toDataURL(type);
-
-
-//获取mimeType
-
-                var _fixType = function(type) {
-                    type = type.toLowerCase().replace(/jpg/i, 'jpeg');
-                    var r = type.match(/png|jpeg|bmp|gif/)[0];
-                    return 'image/' + r;
-                };
-
-// 加工image data，替换mime type
-                imgData = imgData.replace(_fixType(type),'image/octet-stream');
-
-
-                var saveFile = function(data, filename){
-                    var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
-                    save_link.href = data;
-                    save_link.download = filename;
-
-                    var event = document.createEvent('MouseEvents');
-                    event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-                    save_link.dispatchEvent(event);
-                };
-
-// 下载后的问题名
-                var filename = 'baidufe_' + (new Date()).getTime() + '.' + type;
-// download
-                saveFile(imgData,filename);
-
-
-
-
-
+            Canvas2Image.saveAsImage(canvas, 600, 600, "png","文件名，不填则随机");    //可以指定文件名   see https://github.com/broven/canvas2image
+            getWidgetTextContext();
         }
     });
-})
-
-
+}
 
 
