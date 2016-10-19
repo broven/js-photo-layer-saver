@@ -1,7 +1,11 @@
 /**
  * Created by broven on 2016/10/15.
  */
-
+if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+    }, false);
+}
 
 var widget = document.querySelectorAll('#canvas-menu >img')
 for(var i = 0;i<widget.length;i++){
@@ -54,7 +58,7 @@ function saveImage() {
     html2canvas(document.querySelector('#canvasStage'), {
         onrendered: function(canvas) {
             Canvas2Image.saveAsImage(canvas, 600, 600, "png","文件名，不填则随机");    //可以指定文件名   see https://github.com/broven/canvas2image
-            getWidgetTextContext();
+            //getWidgetTextContext();
         }
     });
 }
