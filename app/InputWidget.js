@@ -100,9 +100,6 @@
             order.call(that);
         });
 
-
-
-
         that.rootDiv.addEventListener('touchstart',function (e) {
 
             dragable = true;
@@ -111,8 +108,6 @@
             originTop = that.rootDiv.offsetTop;
             clickX = e.touches[0].clientX;
             clickY = e.touches[0].clientY;
-
-
 
             that.rootDiv.addEventListener('touchmove',function(e){
 
@@ -123,7 +118,6 @@
                     rootDivStyle.left = (originLeft + (e.touches[0].clientX-clickX))+'px';
                 }
             },false);
-
             that.rootDiv.addEventListener('touchend',function (e) {
 
                 if(dragable){
@@ -133,20 +127,35 @@
 
             },false);
         });
+        /////////////////////////////////////
+
+        that.rootDiv.addEventListener('mousedown',function (e) {
+
+            dragable = true;
+            rootDivStyle = that.rootDiv.style;
+            originLeft = that.rootDiv.offsetLeft;
+            originTop = that.rootDiv.offsetTop;
+            clickX = e.clientX;
+            clickY = e.clientY;
 
 
-    //     var obj = this.rootDiv;
-    //     obj.addEventListener('touchmove', function(event) {
-    //         // 如果这个元素的位置内只有一个手指的话
-    //         console.log("移动");
-    //         if (event.targetTouches.length == 1) {
-    //             event.preventDefault();// 阻止浏览器默认事件，重要
-    //             var touch = event.targetTouches[0];
-    //             // 把元素放在手指所在的位置
-    //             obj.style.left = touch.pageX + 'px';
-    //             obj.style.top = touch.pageY + 'px';
-    //         }
-    //     }, false);
+            that.rootDiv.addEventListener('mousemove',function(e){
+                if(dragable){
+                    this.style.zIndex=6666;
+                    rootDivStyle.top = (originTop + (e.clientY-clickY))+'px';
+                    rootDivStyle.left = (originLeft + (e.clientX-clickX))+'px';
+                }
+            },false);
+
+            that.rootDiv.addEventListener('mouseup',function (e) {
+                if(dragable){
+                    this.style.zIndex=2;
+                    dragable=false;
+                }
+
+            },false);
+    });
+
     };
     /**
      * 为所有的浮动块设置顺序
